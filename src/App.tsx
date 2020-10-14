@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback, useState } from 'react';
 import './App.css';
+import logo from './logo.jpg';
+import {MissionContainer} from './components/Mission/index';
+import InfoContainer from './components/MissionInfo/index';
 
-function App() {
+const App = () => {
+
+  const [id, setId] = useState(0);
+  const handleIdChange = useCallback(newId => {
+    setId(newId);
+  }, []);
   return (
+    <div>
+    <img src={logo} alt="SPACE X LOGO" style={{width:"40%", display:'block', margin:'auto'}}/>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MissionContainer handleIdChange={handleIdChange} />
+     <InfoContainer id={id}/>
+    </div>
     </div>
   );
 }
