@@ -12,7 +12,7 @@ const InfoContainer = ({ id }: OwnProps) => {
 
     useEffect(() => {
         refetch();
-    }, [id]);
+    });
 
     if (loading) {
         return <div>...</div>;
@@ -22,9 +22,9 @@ const InfoContainer = ({ id }: OwnProps) => {
         return <h3>Select a flight from the panel</h3>;
     }
 
-    // if (!data) {
-    //     return <div>Select a flight from the panel</div>;
-    // }
+    if (!data) {
+        return <div>Select a flight from the panel</div>;
+    }
 
     return (
         <div className='detail'><Details data={data} /></div>
